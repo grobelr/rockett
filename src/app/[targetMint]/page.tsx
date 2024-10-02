@@ -16,7 +16,10 @@ interface CoinInfo {
   description: string;
   image_uri: string;
   usd_market_cap: number;
-  // Add other fields as needed
+  telegram: string;
+  twitter: string;
+  creator: string;
+  created_timestamp: string;
 }
 
 export default function Home() {
@@ -59,7 +62,7 @@ export default function Home() {
       <main className="flex-grow-1 p-3">
         <div className="row flex-lg-nowrap">
           <div className="col-lg-3 mb-3 mb-lg-0">
-            <LeftSidebar coinInfo={coinInfo} />
+            <LeftSidebar coinInfo={coinInfo as CoinInfo} />
           </div>
           <div className="col-lg-6 mb-4 mb-lg-0">
             <CryptoChart data={data} buyInPrice={buyInPrice} />

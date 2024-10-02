@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 interface CoinInfo {
@@ -17,11 +17,11 @@ interface LeftSidebarProps {
 }
 
 const LeftSidebar: React.FC<LeftSidebarProps> = ({ coinInfo }) => {
-  if (!coinInfo) {
-    return <div>Loading...</div>;
-  } else {
-    console.log(coinInfo);
-  }
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleDescription = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   const getTimeAgo = (timestamp: string) => {
     const created = new Date(timestamp);
@@ -41,16 +41,14 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ coinInfo }) => {
     return `${address.slice(0, 4)}...${address.slice(-4)}`;
   };
 
-  const [isExpanded, setIsExpanded] = React.useState(false);
-
-  const toggleDescription = () => {
-    setIsExpanded(!isExpanded);
-  };
-
   const truncateDescription = (description: string, maxLength: number) => {
     if (description.length <= maxLength) return description;
     return `${description.slice(0, maxLength)}...`;
   };
+
+  if (!coinInfo) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="bg-dark text-light p-4 rounded shadow">
