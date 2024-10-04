@@ -12,6 +12,16 @@ const nextConfig = {
         hostname: 'cf-ipfs.com',
         pathname: '/ipfs/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'arweave.net',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'gateway.irys.xyz',
+        pathname: '/**',
+      },
     ],
   },
 };
